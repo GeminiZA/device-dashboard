@@ -24,3 +24,9 @@ bun dev
 ```
 
 access with `http://localhost:3000`
+
+For now this only processes updates from devices registered to the api before the page is loaded
+
+All live updates are fetched from the MQTT broker
+
+Run the [mock devices](https://github.com/GeminiZA/mock-iot-device) to simulate real time updates from any number of devices. The mock devices script needs to be run at least once before rendering the webpage to register the devices with the api due to the limitation of the demonstration webpage

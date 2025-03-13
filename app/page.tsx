@@ -21,10 +21,8 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchInitialData() {
-      console.log("Fetching inital data");
       const devices = await fetchDevices();
       if (devices) {
-        console.log("Devices:", devices);
         setDevices(devices);
         for (const device of devices) {
           const telemetry = await fetchDeviceTelemetry(device.id);
@@ -50,7 +48,6 @@ export default function Home() {
     });
 
     client.on("message", (topic, message) => {
-      console.log(topic, message.toString());
       const [_, id] = topic.split("/");
       const deviceId = parseInt(id);
 
@@ -58,7 +55,6 @@ export default function Home() {
         const device = prevDevices.find((device) => device.id === deviceId);
         if (device) {
           const data = JSON.parse(message.toString());
-          console.log("Got message data:", data);
           device.status = data.status;
           const formattedTelemetry = {
             timestamp: new Date().toISOString(),
@@ -67,16 +63,11 @@ export default function Home() {
           device.telemetry = [formattedTelemetry, ...device.telemetry];
           return prevDevices.map((d) => (d.id === deviceId ? device : d));
         } else {
-          console.log("Device not found", id);
           return prevDevices;
         }
       });
     });
   }, []);
-
-  useEffect(() => {
-    console.log("Devices updated:", devices);
-  }, [devices]);
 
   return (
     <div>
