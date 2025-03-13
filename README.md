@@ -2,6 +2,11 @@
 
 ## Getting Started
 
+#### Requirements
+
+- nodejs
+- npm
+
 Create .env file
 
 ```
@@ -10,6 +15,8 @@ NEXT_PUBLIC_MQTT_WS_PORT=8000
 NEXT_PUBLIC_MQTT_USERNAME=test
 NEXT_PUBLIC_MQTT_PASSWORD=1234
 ```
+
+Run `npm install`
 
 Run the development server:
 
