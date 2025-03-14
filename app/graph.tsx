@@ -72,6 +72,8 @@ const TelemetryGraph: React.FC<TelemetryGraphProps> = ({ data }) => {
           display: true,
           text: "Humidity (%)",
         },
+        suggestedMax: 100,
+        suggestedMin: 0,
       },
       y1: {
         type: "linear" as const,
@@ -84,6 +86,8 @@ const TelemetryGraph: React.FC<TelemetryGraphProps> = ({ data }) => {
         grid: {
           drawOnChartArea: false,
         },
+        suggestedMax: 50,
+        suggestedMin: -10,
       },
     },
     plugins: {
